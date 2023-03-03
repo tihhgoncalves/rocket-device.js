@@ -1,20 +1,10 @@
-
 function checkScreenSize() {
-  let screenSize = window.innerWidth;
+  const screenSize = window.innerWidth;
+  const body = document.body.classList;
 
-  if (screenSize < 768) {
-    document.body.classList.remove('rocket-tablet');
-    document.body.classList.remove('rocket-desktop');
-    document.body.classList.add('rocket-mobile');
-  } else if (screenSize >= 768 && screenSize < 1024) {
-    document.body.classList.remove('rocket-mobile');
-    document.body.classList.remove('rocket-desktop');
-    document.body.classList.add('rocket-tablet');
-  } else {
-    document.body.classList.remove('rocket-mobile');
-    document.body.classList.remove('rocket-tablet');
-    document.body.classList.add('rocket-desktop');
-  }
+  body.toggle('rocket-mobile', screenSize < 768);
+  body.toggle('rocket-tablet', screenSize >= 768 && screenSize < 1024);
+  body.toggle('rocket-desktop', screenSize >= 1024);
 }
 
 checkScreenSize();
